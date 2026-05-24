@@ -1,0 +1,1064 @@
+/* =============================================================
+   VARIABLES & RESETEO
+============================================================= */
+:root {
+  --bg-page: #ffffff;
+  --bg-soft: #f5f7fb;
+
+  --card-bg: #f9fafb;
+
+  --primary: #1f7ae0;
+  --primary-dark: #1458a6;
+  --primary-soft: #e3f0ff;
+
+  --text-main: #2b2f3a;
+  --text-soft: #8b94a8;
+
+  --radius-lg: 18px;
+
+  --shadow-soft: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-main);
+}
+
+
+/* =============================================================
+   UTILIDADES
+============================================================= */
+.container {
+  width: min(1120px, 100% - 2.5rem);
+  margin: 0 auto;
+}
+
+.btn {
+  border: none;
+  padding: 0.8rem 1.8rem;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease,
+    background-color 0.15s ease, color 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-soft);
+}
+
+.btn--primary {
+  background: linear-gradient(90deg, #1f7ae0, #3b8df0);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(31, 122, 224, 0.35);
+  transition: all 0.2s ease;
+}
+
+.btn--primary:hover {
+  background: linear-gradient(90deg, #1862b5, #3278ca);
+  box-shadow: 0 6px 16px rgba(31, 122, 224, 0.45);
+  transform: translateY(-2px);
+}
+
+.btn--primary:active {
+  transform: scale(0.95);
+}
+
+.btn--secondary {
+  background-color: #ffffff;
+  color: var(--primary);
+  border: 1px solid var(--primary-soft);
+}
+
+.btn--small {
+  padding: 0.5rem 1.2rem;
+  font-size: 0.85rem;
+}
+
+
+/* =============================================================
+   HEADER
+============================================================= */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.header__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 0;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo__icon {
+  font-size: 1.3rem;
+}
+
+.logo__img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.logo__text {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* Nav */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav__link {
+  color: var(--primary);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.nav__link:hover {
+  text-decoration: underline;
+}
+
+/* Hamburguesa */
+.hamburger {
+  width: 2.3rem;
+  height: 2.3rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.25rem;
+  cursor: pointer;
+}
+
+.hamburger span {
+  background: var(--primary);
+}
+
+/* Menú móvil */
+.nav--open {
+  position: absolute;
+  inset: 100% 0 auto 0;
+  background: #0d1f1f;
+  padding: 0.75rem 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+
+/* =============================================================
+   HERO
+============================================================= */
+.hero.hero--banner {
+  position: relative;
+  padding: 4rem 0;
+  color: #ffffff;
+  background: radial-gradient(circle at left, #111827 0, #020617 55%, #020617 100%);
+  overflow: hidden;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+  min-height: 380px;
+  text-align: left;
+  padding: 2.5rem 0;
+}
+
+.hero__text {
+  max-width: 560px;
+}
+
+/* Imagen lado derecho */
+.hero__image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 1rem;
+}
+
+.hero__image img {
+  width: 95%;
+  max-width: 680px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 24px;
+  box-shadow:
+    0 35px 65px rgba(0,0,0,0.55),
+    0 0 50px rgba(77, 160, 255, 0.20);
+  transition: 0.3s ease;
+}
+
+.hero__image img:hover {
+  transform: translateY(0) scale(1.02);
+  box-shadow:
+    0 40px 75px rgba(0,0,0,0.65),
+    0 0 55px rgba(77, 160, 255, 0.22);
+}
+
+/* Textos del hero */
+.hero__eyebrow {
+  margin: 0 0 0.6rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #9ca3ff;
+}
+
+.hero__text h1 {
+  margin: 0 0 0.6rem;
+  font-size: 2.6rem;
+  line-height: 1.1;
+}
+
+.hero__text h1 span {
+  color: #4da3ff;
+}
+
+.hero__sub {
+  margin: 0 0 1rem;
+  color: #c7d2fe;
+  font-size: 0.98rem;
+}
+
+/* CTA grande */
+.hero__cta.hero__cta--big {
+  margin-top: 0.4rem;
+  padding: 1.2rem 1.6rem;
+  background: rgba(15, 23, 42, 0.9);
+  border-radius: 999px;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.55);
+}
+
+.hero__cta.hero__cta--big .hero__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
+.btn.btn--hero {
+  font-size: 1rem;
+  padding: 0.95rem 2.6rem;
+}
+
+.btn--hero-secondary {
+  font-size: 0.9rem;
+  padding: 0.85rem 1.8rem;
+}
+
+.hero__meta {
+  display: flex;
+  gap: 1.4rem;
+  font-size: 0.8rem;
+  color: #e5e7eb;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.hero__meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+
+/* =============================================================
+   SECCIONES GENERALES
+============================================================= */
+.section {
+  padding: 4rem 0;
+}
+
+.section--light {
+  background: var(--bg-soft);
+}
+
+.section h2 {
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Títulos centrados reutilizables */
+.section-title {
+  text-align: center;
+  font-size: 1.6rem;
+  margin-bottom: 0.3rem;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--text-soft);
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+}
+
+
+/* =============================================================
+   PASOS (CÓMO FUNCIONA)
+============================================================= */
+.steps {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  background: #ffffff;
+  padding: 1.8rem;
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.05);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.step:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(0,0,0,0.07);
+}
+
+.step__icon {
+  min-width: 60px;
+  height: 60px;
+  background: #ffffff;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+}
+
+.step__icon img {
+  width: 2.4rem;
+  height: 2.4rem;
+  object-fit: contain;
+}
+
+.step h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.step p {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 0.95rem;
+}
+
+
+/* =============================================================
+   SELECTOR DE BARBEROS (CÍRCULOS)
+============================================================= */
+.barberos-selector {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Tarjeta del barbero */
+.barbero-option {
+  background: transparent;
+  text-align: center;
+  padding: 1rem 1.4rem 1.2rem;
+  outline: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 20px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.barbero-option:hover {
+  background: #f9fafb;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+}
+
+/* Círculo de la foto */
+.barbero-option__circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: #f3f4ff;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Imagen del barbero */
+.barbero-option__circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 50%;
+}
+
+/* Nombre y descripción */
+.barbero-option__name {
+  display: block;
+  margin-top: 0.9rem;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text-main);
+}
+
+.barbero-option__tag {
+  display: block;
+  font-size: 0.9rem;
+  margin-top: 0.15rem;
+  color: var(--text-soft);
+}
+
+/* Botón de disponibilidad */
+.barbero-option__btn {
+  margin-top: 0.9rem;
+}
+
+/* Hover del círculo: efecto más suave */
+.barbero-option:hover .barbero-option__circle {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.12);
+}
+
+/* Estado ACTIVO: sin borde azul y con sombra discreta */
+.barbero-option--active {
+  background: #f5f7fb;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.10);
+}
+
+/* Círculo del activo: igual que los demás */
+.barbero-option--active .barbero-option__circle {
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+}
+
+.barbero-option--active .barbero-option__name {
+  color: var(--primary-dark);
+}
+
+.barbero-option--active .barbero-option__tag {
+  color: var(--text-main);
+}
+
+/* Responsive barberos */
+@media (max-width: 600px) {
+  .barbero-option__circle {
+    width: 130px;
+    height: 130px;
+  }
+}
+
+
+/* =============================================================
+   SERVICIOS
+============================================================= */
+.services {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.8rem;
+}
+
+.service-card {
+  background: #ffffff;
+  padding: 1.4rem 1.6rem;
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 35px rgba(31, 122, 224, 0.18);
+  background-color: #f7f9fc;
+}
+
+.service-card__icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 24px;
+  background: #f3f4ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.3rem;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.service-card:hover .service-card__icon {
+  background: #e9f0ff;
+  transform: scale(1.05);
+}
+
+.service-card__icon img {
+  width: 42px;
+  height: 42px;
+}
+
+.service-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.4rem;
+}
+
+.service-card p {
+  margin: 0 0 0.4rem;
+  color: var(--text-soft);
+}
+
+.service-card__price {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+}
+
+
+/* =============================================================
+   MENÚ PRINCIPAL
+============================================================= */
+.menu-grid {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  margin-top: 1.8rem;
+}
+
+.menu-btn {
+  min-width: 150px;
+  padding: 0.85rem 1.8rem;
+  border-radius: 999px;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+  cursor: pointer;
+  box-shadow: 0 6px 14px rgba(15, 23, 42, 0.06);
+  transition: transform 0.18s ease, box-shadow 0.18s ease,
+              background-color 0.18s ease, color 0.18s ease,
+              border-color 0.18s ease;
+}
+
+.menu-btn:hover {
+  background: linear-gradient(90deg, #1f7ae0, #3b8df0);
+  color: #ffffff;
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(31, 122, 224, 0.35);
+}
+
+
+/* =============================================================
+   FOOTER
+============================================================= */
+.footer {
+  background: #020617;
+  color: #9ca3af;
+  padding: 1.5rem 0;
+  font-size: 0.85rem;
+}
+
+.footer__content {
+  text-align: center;
+}
+
+
+/* =============================================================
+   MEDIA QUERIES
+============================================================= */
+@media (min-width: 768px) {
+
+  .nav {
+    display: flex;
+  }
+
+  .nav--open {
+    position: static;
+    flex-direction: row;
+    padding: 0;
+    background: transparent;
+  }
+
+  .hamburger {
+    display: none;
+  }
+
+  .hero__content {
+    display: grid;
+    grid-template-columns: 1.05fr 1.25fr;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .hero__text h1 {
+    font-size: 3rem;
+  }
+
+  .steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .services {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .menu-grid {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .menu-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+
+/* =============================================================
+   LOGIN / AUTH
+============================================================= */
+.auth-section {
+  background: var(--bg-soft);
+  min-height: calc(100vh - 80px); /* alto casi pantalla completa */
+  display: flex;
+  align-items: center;
+  padding: 3.5rem 0;
+}
+
+.auth-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 430px;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 2.4rem 2.6rem;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.1);
+}
+
+.auth-title {
+  margin: 0 0 0.4rem;
+  font-size: 1.7rem;
+}
+
+.auth-subtitle {
+  margin: 0 0 1.6rem;
+  font-size: 0.95rem;
+  color: var(--text-soft);
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.auth-field label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.auth-input {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.auth-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 1px rgba(31, 122, 224, 0.35);
+}
+
+.auth-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.4rem;
+}
+
+.auth-remember {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  color: var(--text-soft);
+}
+
+.auth-remember input {
+  width: 14px;
+  height: 14px;
+}
+
+.auth-link {
+  font-size: 0.85rem;
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.auth-link:hover {
+  text-decoration: underline;
+}
+
+.auth-submit {
+  width: 100%;
+  margin-top: 0.6rem;
+}
+
+.auth-footer-text {
+  margin-top: 0.8rem;
+  font-size: 0.85rem;
+  color: var(--text-soft);
+  text-align: center;
+}
+
+/* Responsive login */
+@media (max-width: 600px) {
+  .auth-card {
+    padding: 2rem 1.6rem;
+  }
+}
+
+/* =============================================================
+   ONBOARDING / REGISTRO
+============================================================= */
+.onboarding-section {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  padding: 3rem 0;
+  background: var(--bg-page);
+}
+
+.onboarding-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.onboarding-card {
+  width: 100%;
+  max-width: 420px;
+  border: 2px solid #111827;
+  border-radius: 6px;
+  padding: 2.4rem 2.2rem 2.6rem;
+  text-align: center;
+  background: #ffffff;
+}
+
+.onboarding-logo {
+  width: 160px;
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 1.8rem;
+}
+
+.onboarding-title {
+  margin: 0 0 0.3rem;
+  font-size: 1.4rem;
+  letter-spacing: 0.04em;
+}
+
+.onboarding-subtitle {
+  margin: 0 0 1.6rem;
+  font-size: 0.95rem;
+  color: var(--text-soft);
+}
+
+.onboarding-copy {
+  margin: 0 0 2rem;
+  font-size: 0.9rem;
+}
+
+.onboarding-btn {
+  display: block;
+  width: 100%;
+  margin-bottom: 0.9rem;
+}
+
+.onboarding-btn--outline {
+  background: #ffffff;
+  color: #111827;
+  border: 1px solid #111827;
+  box-shadow: none;
+}
+
+.onboarding-btn--outline:hover {
+  background: #111827;
+  color: #ffffff;
+}
+
+.onboarding-note {
+  margin-top: 1.8rem;
+  font-size: 0.85rem;
+  color: var(--text-soft);
+}
+
+/* =============================================================
+   ONBOARDING / REGISTRO
+============================================================= */
+.time-slots-empty {
+  font-size: 0.85rem;
+  color: var(--text-soft);
+}
+
+/* ====================== CALENDARIO DISPONIBILIDAD ======================= */
+
+.calendar {
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  background: #ffffff;
+  padding: 1.2rem 1.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.8rem;
+}
+
+.calendar-header h2 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.calendar-nav {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+/* Aquí está la magia: 7 columnas fijas */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0.45rem;
+  font-size: 0.8rem;
+}
+
+/* Día normal */
+.calendar-day {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #f9fafb;
+  min-height: 70px;
+  padding: 0.3rem 0.2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.calendar-day > span:first-child {
+  font-weight: 600;
+  margin-bottom: 0.15rem;
+}
+
+/* Texto de “3 libres”, “Cerrado”, etc */
+.calendar-day__status {
+  font-size: 0.7rem;
+  color: var(--text-soft);
+}
+
+/* Encabezados Dom/Lun/Mar... */
+.calendar-day--label {
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  min-height: auto;
+  font-weight: 600;
+}
+
+/* Huecos antes/después del mes */
+.calendar-day--muted {
+  border: none;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* Día seleccionado */
+.calendar-day--selected {
+  background: var(--primary);
+  border-color: var(--primary-dark);
+  color: #ffffff;
+}
+
+.calendar-day--selected .calendar-day__status {
+  color: #e5e7eb;
+}
+
+/* Un poquito de resalte al pasar el mouse */
+.calendar-day:not(.calendar-day--label):not(.calendar-day--muted):hover {
+  cursor: pointer;
+  border-color: var(--primary);
+}
+
+/* ====== Tarjetas de barbero en el flujo de agendar ====== */
+
+.barbero-radio {
+  display: none;  /* escondemos el radio, usamos la tarjeta como selector */
+}
+
+/* Que las tarjetas sean clicables tipo botón */
+.barbero-option--booking {
+  cursor: pointer;
+}
+
+/* Info de rating debajo del subtítulo */
+.barbero-rating {
+  margin-top: 0.3rem;
+  font-size: 0.8rem;
+  color: var(--text-soft);
+  display: flex;
+  gap: 0.25rem;
+  justify-content: center;
+}
+
+.barbero-rating span:first-child {
+  font-weight: 600;
+}
+
+/* Botón "Ver perfil completo" dentro de la tarjeta */
+.barbero-option__btn-secondary {
+  margin-top: 0.6rem;
+}
+
+/* Reutilizamos tu estado activo pero un pelín más marcado para este flujo */
+.barbero-option--booking.barbero-option--active {
+  background: #f5f7fb;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+
+.barbero-option--booking.barbero-option--active .barbero-option__name {
+  color: var(--primary-dark);
+}
+
+
+/* ====== Sección de Agendar barbero (márgenes similares al index) ====== */
+
+#agendar-barbero.section {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.barberos-selector--booking {
+  margin-top: 2rem;
+}
+
+/* radios ocultos: la tarjeta es el selector */
+.barbero-radio {
+  display: none;
+}
+
+/* Tarjetas clicables en este flujo */
+.barbero-option--booking {
+  cursor: pointer;
+}
+
+/* Cuando está seleccionada */
+.barbero-option--booking.barbero-option--active {
+  background: #f5f7fb;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+
+.barbero-option--booking.barbero-option--active .barbero-option__name {
+  color: var(--primary-dark);
+}
+
+/* Rating debajo del subtítulo */
+.barbero-rating {
+  margin-top: 0.3rem;
+  font-size: 0.8rem;
+  color: var(--text-soft);
+  display: flex;
+  gap: 0.25rem;
+  justify-content: center;
+}
+
+.barbero-rating span:first-child {
+  font-weight: 600;
+}
+
+.barbero-option__btn-secondary {
+  margin-top: 0.6rem;
+}
+
+/* Contenedor del botón continuar */
+.agendar-actions {
+  margin-top: 2.5rem;
+  text-align: center;
+}
+
+.booking-continue {
+  padding: 0.9rem 2.8rem;
+}
+
+.booking-hu {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-soft);
+}

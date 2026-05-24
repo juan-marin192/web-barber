@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iniciar sesión | Sin Enredos Barber</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Header / Navbar -->
+  <header class="header">
+    <div class="container header__content">
+      <div class="logo">
+        <img src="img/logo.png" alt="Logo Sin Enredos" class="logo__img">
+        <span class="logo__text">Sin Enredos</span>
+      </div>
+
+      <nav class="nav" id="nav">
+        <a href="index.html#como-funciona" class="nav__link">Cómo funciona</a>
+        <a href="index.html#servicios" class="nav__link">Servicios</a>
+        <a href="index.html" class="btn btn--secondary">Volver al inicio</a>
+      </nav>
+
+      <!-- Botón hamburguesa (si luego quieres hacerlo responsive) -->
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN: Login -->
+  <main>
+    <section class="auth-section">
+      <div class="container auth-wrapper">
+
+        <div class="auth-card">
+          <h1 class="auth-title">Inicia sesión</h1>
+          <p class="auth-subtitle">
+            Ingresa a tu cuenta para gestionar citas, barberos y reservas.
+          </p>
+
+          <form class="auth-form">
+            <div class="auth-field">
+              <label for="email">Correo electrónico o usuario</label>
+              <input
+                type="email"
+                id="email"
+                class="auth-input"
+                placeholder="tucorreo@mail.com" />
+            </div>
+
+            <div class="auth-field">
+              <label for="password">Contraseña</label>
+              <input
+                type="password"
+                id="password"
+                class="auth-input"
+                placeholder="••••••••" />
+            </div>
+
+            <div class="auth-row">
+              <label class="auth-remember">
+                <input type="checkbox" />
+                <span>Recordarme</span>
+              </label>
+              <a href="#" class="auth-link">¿Olvidaste tu contraseña?</a>
+            </div>
+
+            <button type="submit" class="btn btn--primary auth-submit">
+              Iniciar sesión
+            </button>
+
+            <p class="auth-footer-text">
+            ¿Aún no tienes cuenta?
+            <a href="registro.html" class="auth-link">Crear cuenta</a>
+            </p>
+          </form>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__content">
+      <p>© 2025 Sin Enredos Barber. Todos los derechos reservados.</p>
+      <p>Hecho con tijeras, café y código.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

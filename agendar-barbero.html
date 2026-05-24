@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agendar cita | Elegir barbero</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Header / Navbar -->
+  <header class="header">
+    <div class="container header__content">
+      <div class="logo">
+        <img src="img/logo-sin-enredos.jpeg" alt="Logo Sin Enredos" class="logo__img">
+        <span class="logo__text">Sin Enredos</span>
+      </div>
+
+      <nav class="nav">
+        <a href="index.html" class="nav__link">Inicio</a>
+        <a href="login.html" class="btn btn--secondary">Iniciar sesión</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- MISMO ESTILO QUE LAS SECCIONES DEL INDEX -->
+    <section class="section" id="agendar-barbero">
+      <div class="container">
+
+        <h1 class="section-title" style="margin-bottom:0.2rem;">
+          Agendar cita
+        </h1>
+        <p class="section-subtitle" style="margin-bottom:0.3rem;">
+          Paso 2 · Elegir barbero
+        </p>
+        <p class="section-subtitle">
+          Selecciona tu barbero preferido para continuar.
+        </p>
+
+        <!-- Tarjetas de barberos: MISMO LOOK que en el index -->
+        <div class="barberos-selector barberos-selector--booking">
+
+          <!-- Juancho style -->
+          <label class="barbero-option barbero-option--booking" data-id="juancho">
+            <input type="radio" name="barbero" value="juancho" class="barbero-radio" />
+
+            <div class="barbero-option__circle">
+              <img src="img/barbero1.png" alt="Barbero Juancho style">
+            </div>
+            <span class="barbero-option__name">Juancho style</span>
+            <span class="barbero-option__tag">Fade y corte clásico</span>
+
+            <div class="barbero-rating">
+              <span>★ 4.8</span>
+              <span class="barbero-rating__reviews">(124 reseñas)</span>
+            </div>
+
+            <button type="button" class="btn btn--secondary btn--small barbero-option__btn-secondary">
+              Ver perfil completo
+            </button>
+          </label>
+
+          <!-- Andrés Barber -->
+          <label class="barbero-option barbero-option--booking" data-id="andres">
+            <input type="radio" name="barbero" value="andres" class="barbero-radio" />
+
+            <div class="barbero-option__circle">
+              <img src="img/barbero2.png" alt="Barbero Andrés Barber">
+            </div>
+            <span class="barbero-option__name">Andrés Barber</span>
+            <span class="barbero-option__tag">Diseños y barbería moderna</span>
+
+            <div class="barbero-rating">
+              <span>★ 4.9</span>
+              <span class="barbero-rating__reviews">(98 reseñas)</span>
+            </div>
+
+            <button type="button" class="btn btn--secondary btn--small barbero-option__btn-secondary">
+              Ver perfil completo
+            </button>
+          </label>
+
+          <!-- Rosario -->
+          <label class="barbero-option barbero-option--booking" data-id="rosario">
+            <input type="radio" name="barbero" value="rosario" class="barbero-radio" />
+
+            <div class="barbero-option__circle">
+              <img src="img/barbero3.png" alt="Barbera Rosario">
+            </div>
+            <span class="barbero-option__name">Rosario</span>
+            <span class="barbero-option__tag">Experiencia VIP</span>
+
+            <div class="barbero-rating">
+              <span>★ 4.7</span>
+              <span class="barbero-rating__reviews">(87 reseñas)</span>
+            </div>
+
+            <button type="button" class="btn btn--secondary btn--small barbero-option__btn-secondary">
+              Ver perfil completo
+            </button>
+          </label>
+
+        </div>
+
+        <!-- Botón continuar -->
+        <div class="agendar-actions">
+          <button class="btn btn--primary booking-continue"
+                  onclick="window.location.href='disponibilidad-barbero.html'">
+            CONTINUAR →
+          </button>
+        </div>
+
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__content">
+      <p>© 2025 Sin Enredos Barber. Todos los derechos reservados.</p>
+      <p>Hecho con tijeras, café y código.</p>
+    </div>
+  </footer>
+
+  <!-- Script para:
+       1) Marcar la tarjeta seleccionada
+       2) Leer el ?barbero= de la URL y seleccionar el que viene del index -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const cards = document.querySelectorAll('.barbero-option--booking');
+
+      // Al hacer click en una tarjeta, marcarla como activa
+      cards.forEach(card => {
+        card.addEventListener('click', () => {
+          cards.forEach(c => c.classList.remove('barbero-option--active'));
+          card.classList.add('barbero-option--active');
+
+          const radio = card.querySelector('.barbero-radio');
+          if (radio) radio.checked = true;
+        });
+      });
+
+      // Leer el parámetro ?barbero= de la URL (juancho|andres|rosario)
+      const params = new URLSearchParams(window.location.search);
+      const barberoId = params.get('barbero');
+
+      if (barberoId) {
+        const cardFromUrl = document.querySelector(`.barbero-option--booking[data-id="${barberoId}"]`);
+        if (cardFromUrl) {
+          cardFromUrl.click(); // dispara el mismo comportamiento de selección
+        }
+      } else {
+        // Si no viene parámetro, por defecto el primero
+        const first = document.querySelector('.barbero-option--booking');
+        if (first) first.click();
+      }
+    });
+  </script>
+
+</body>
+</html>

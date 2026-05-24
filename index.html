@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sin Enredos Barber</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Header / Navbar -->
+    <header class="header">
+      <div class="container header__content">
+        <div class="logo">
+          <img
+            src="img/logo-sin-enredos.jpeg"
+            alt="Logo Sin Enredos"
+            class="logo__img"
+          />
+          <span class="logo__text">Sin Enredos</span>
+        </div>
+
+        <nav class="nav" id="nav">
+          <!-- Menú principal en el header -->
+          <a href="#barberos" class="nav__link">Barberos</a>
+          <a href="#reserva" class="nav__link">Citas</a>
+          <a href="#reserva" class="nav__link">Agendar</a>
+          <a href="#historial" class="nav__link">Historial</a>
+          <a href="#ofertas" class="nav__link">Ofertas</a>
+          <a href="login.html" class="btn btn--secondary">Iniciar sesión</a>
+        </nav>
+
+        <!-- Botón hamburguesa (mobile) -->
+        <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="hero hero--banner">
+        <div class="container hero__content">
+          <!-- COLUMNA IZQUIERDA: TEXTO -->
+          <div class="hero__text">
+            <p class="hero__eyebrow">Tu barbero, sin filas</p>
+            <h1>
+              Reserva tu <span>corte perfecto</span><br />
+              sin perder tiempo.
+            </h1>
+            <p class="hero__sub">
+              Agenda en línea con tu barbero de confianza, elige el servicio y
+              llega directo a la silla. Sin esperar, sin enredos.
+            </p>
+
+            <div class="hero__cta hero__cta--big">
+              <div class="hero__actions">
+                <!-- CTA principal: va al flujo de agendar -->
+                <a
+                  href="agendar-barbero.html"
+                  class="btn btn--primary btn--hero"
+                >
+                  Agendar cita ahora
+                </a>
+
+                <!-- Segundo CTA: también lleva al flujo de barbero -->
+                <a
+                  href="agendar-barbero.html"
+                  class="btn btn--secondary btn--hero-secondary"
+                >
+                  Ver agenda de barberos
+                </a>
+              </div>
+
+              <div class="hero__meta">
+                <span>Reserva en menos de 1 minuto</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- COLUMNA DERECHA: IMAGEN -->
+          <div class="hero__image">
+            <img src="img/logo-sin-enredos.jpeg" alt="logo-sin-enredos" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Cómo funciona -->
+      <section class="section" id="como-funciona">
+        <div class="container">
+          <h2>¿Cómo funciona?</h2>
+
+          <div class="steps">
+            <div class="step">
+              <div class="step__icon">
+                <img src="img/calendario.png" alt="calendario" />
+              </div>
+              <div class="step__content">
+                <h3>1. Elige fecha y hora</h3>
+                <p>Revisa la agenda disponible de cada barbero.</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step__icon">
+                <img src="img/tijeras.png" alt="tijeras" />
+              </div>
+              <div class="step__content">
+                <h3>2. Selecciona el servicio</h3>
+                <p>Corte clásico, fade, barba, diseño y más.</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step__icon">
+                <img src="img/check.png" alt="check" />
+              </div>
+              <div class="step__content">
+                <h3>3. Confirma tu reserva</h3>
+                <p>Recibe confirmación y recordatorios de tu cita.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Barberos -->
+      <section class="section" id="barberos">
+        <div class="container">
+          <h2 class="section-title">Elige el barbero que deseas reservar</h2>
+          <p class="section-subtitle">
+            Selecciona tu barbero de confianza para continuar con la reserva.
+          </p>
+
+          <div class="barberos-selector">
+            <!-- Barbero 1 -->
+            <div class="barbero-option">
+              <div class="barbero-option__circle">
+                <img src="img/barbero1.png" alt="Barbero Juancho style" />
+              </div>
+              <span class="barbero-option__name">Juancho style</span>
+              <span class="barbero-option__tag">Fade y corte clásico</span>
+              <a
+                href="agendar-barbero.html"
+                class="btn btn--primary btn--small barbero-option__btn"
+              >
+                Revisar disponibilidad
+              </a>
+            </div>
+
+            <!-- Barbero 2 -->
+            <div class="barbero-option">
+              <div class="barbero-option__circle">
+                <img src="img/barbero1.png" alt="Barbero Andrés Barber" />
+              </div>
+              <span class="barbero-option__name">Andrés Barber</span>
+              <span class="barbero-option__tag"
+                >Diseños y barbería moderna</span
+              >
+              <a
+                href="agendar-barbero.html"
+                class="btn btn--primary btn--small barbero-option__btn"
+              >
+                Revisar disponibilidad
+              </a>
+            </div>
+
+            <!-- Barbero 3 -->
+            <div class="barbero-option">
+              <div class="barbero-option__circle">
+                <img src="img/barbero1.png" alt="Barbera Rosario" />
+              </div>
+              <span class="barbero-option__name">Rosario</span>
+              <span class="barbero-option__tag">Experiencia VIP</span>
+              <a
+                href="agendar-barbero.html"
+                class="btn btn--primary btn--small barbero-option__btn"
+              >
+                Revisar disponibilidad
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Servicios -->
+      <section class="section section--light" id="servicios">
+        <div class="container">
+          <h2 class="section-title">Elige el servicio que deseas reservar</h2>
+
+          <div class="services">
+            <!-- Servicio 1 -->
+            <article class="service-card">
+              <div class="service-card__icon">
+                <img src="img/corte.png" alt="Corte clásico" />
+              </div>
+              <h3>Corte clásico</h3>
+              <span class="service-card__price">Desde $20.000</span>
+              <a href="agendar-barbero.html" class="btn btn--primary btn--small"
+                >Agendar</a
+              >
+            </article>
+
+            <!-- Servicio 2 -->
+            <article class="service-card">
+              <div class="service-card__icon">
+                <img src="img/fade-barba.png" alt="Fade + Barba" />
+              </div>
+              <h3>Fade + Barba</h3>
+              <span class="service-card__price">Desde $35.000</span>
+              <a href="agendar-barbero.html" class="btn btn--primary btn--small"
+                >Agendar</a
+              >
+            </article>
+
+            <!-- Servicio 3 -->
+            <article class="service-card">
+              <div class="service-card__icon">
+                <img
+                  src="img/afeitado-tradicional.png"
+                  alt="Afeitado tradicional"
+                />
+              </div>
+              <h3>Afeitado tradicional</h3>
+              <span class="service-card__price">Desde $20.000</span>
+              <a href="agendar-barbero.html" class="btn btn--primary btn--small"
+                >Agendar</a
+              >
+            </article>
+
+            <!-- Servicio 4 -->
+            <article class="service-card">
+              <div class="service-card__icon">
+                <img src="img/corte-ninos.png" alt="Corte de pelo para niños" />
+              </div>
+              <h3>Corte de pelo para niños</h3>
+              <span class="service-card__price">Desde $18.000</span>
+              <a href="agendar-barbero.html" class="btn btn--primary btn--small"
+                >Agendar</a
+              >
+            </article>
+
+            <!-- Servicio 5 -->
+            <article class="service-card">
+              <div class="service-card__icon">
+                <img src="img/lavado.png" alt="Lavado y cepillado" />
+              </div>
+              <h3>Lavado y cepillado</h3>
+              <span class="service-card__price">Desde $20.000</span>
+              <a href="agendar-barbero.html" class="btn btn--primary btn--small"
+                >Agendar</a
+              >
+            </article>
+
+            <!-- Servicio 6 -->
+            <article class="service-card">
+              <div class="service-card__icon">
+                <img src="img/masaje-facial.png" alt="Masaje facial" />
+              </div>
+              <h3>Masaje facial</h3>
+              <span class="service-card__price">Desde $22.000</span>
+              <a href="agendar-barbero.html" class="btn btn--primary btn--small"
+                >Agendar</a
+              >
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sección futura de reservas -->
+      <section class="section" id="reserva">
+        <div class="container">
+          <h2>Reserva en línea</h2>
+          <p>
+            Aquí más adelante montaremos el formulario real de reservas, el
+            calendario y la lógica para elegir barbero y servicio.
+          </p>
+          <button class="btn btn--primary" disabled>Próximamente</button>
+        </div>
+      </section>
+
+      <!-- Secciones vacías para que los enlaces del menú no se rompan -->
+      <section class="section" id="historial">
+        <div class="container">
+          <h2>Historial de citas</h2>
+          <p>Próximamente verás aquí tu historial de reservas.</p>
+        </div>
+      </section>
+
+      <section class="section" id="ofertas">
+        <div class="container">
+          <h2>Ofertas y promociones</h2>
+          <p>
+            Muy pronto verás aquí promociones exclusivas para clientes
+            registrados.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container footer__content">
+        <p>© 2025 Sin Enredos Barber. Todos los derechos reservados.</p>
+        <p>Hecho con tijeras, café y código.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

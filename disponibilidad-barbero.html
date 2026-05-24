@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Disponibilidad | Sin Enredos Barber</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header__content">
+      <div class="logo">
+        <img src="img/logo.png" alt="Logo Sin Enredos" class="logo__img">
+        <span class="logo__text">Sin Enredos</span>
+      </div>
+
+      <nav class="nav">
+        <a href="index.html" class="nav__link">Inicio</a>
+        <a href="login.html" class="btn btn--secondary">Iniciar sesión</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="booking booking--availability">
+      <div class="container booking__inner">
+
+        <!-- Encabezado -->
+        <header class="booking-header">
+          <button class="booking-back" onclick="history.back()">
+            ←
+          </button>
+          <div>
+            <h1 class="booking-title">Disponibilidad</h1>
+            <p class="booking-subtitle">Miguel Torres</p>
+          </div>
+        </header>
+
+        <!-- Filtros por servicio -->
+        <div class="availability-filters">
+          <span>Filtrar por servicio:</span>
+          <div class="availability-chips">
+            <button class="chip chip--active">Todos</button>
+            <button class="chip">Corte</button>
+            <button class="chip">Barba</button>
+            <button class="chip">Lavado</button>
+          </div>
+        </div>
+
+        <!-- Calendario INTERACTIVO -->
+        <section class="calendar">
+          <header class="calendar-header">
+            <button class="calendar-nav" data-dir="prev">‹</button>
+            <h2 id="calendar-month-label"></h2>
+            <button class="calendar-nav" data-dir="next">›</button>
+          </header>
+
+          <div class="calendar-grid" id="calendar-grid">
+            <!-- El JS llena todo aquí -->
+          </div>
+        </section>
+
+        <!-- Horarios del día -->
+        <section class="time-slots-section">
+          <h3 class="time-slots-title" id="time-slots-title">
+            Horarios disponibles
+          </h3>
+
+          <div class="time-slots" id="time-slots">
+            <!-- El JS genera los botones de horas -->
+          </div>
+        </section>
+
+        <!-- Leyenda -->
+        <section class="availability-legend">
+          <h4>Leyenda</h4>
+          <div class="legend-grid">
+            <div class="legend-item">
+              <span class="legend-box legend-box--available"></span>
+              <span>Disponible</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-box legend-box--busy"></span>
+              <span>Ocupado</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-box legend-box--lunch"></span>
+              <span>Almuerzo</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-box legend-box--closed"></span>
+              <span>Cerrado</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Botón confirmar -->
+        <button class="btn btn--primary booking-continue">
+          CONFIRMAR FECHA Y HORA
+        </button>
+
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__content">
+      <p>© 2025 Sin Enredos Barber. Todos los derechos reservados.</p>
+      <p>Hecho con tijeras, café y código.</p>
+    </div>
+  </footer>
+
+  <!-- JS del calendario interactivo -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var monthLabel = document.getElementById('calendar-month-label');
+      var calendarGrid = document.getElementById('calendar-grid');
+      var slotsTitle = document.getElementById('time-slots-title');
+      var slotsContainer = document.getElementById('time-slots');
+
+      var monthNames = [
+        'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+        'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+      ];
+      var monthNamesShort = [
+        'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun',
+        'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'
+      ];
+      var dayLabels = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
+
+      // Horarios base
+      var baseSlots = [
+        '09:00', '09:30', '10:00', '10:30',
+        '11:00', '11:30',
+        '14:00', '14:30', '15:00', '15:30'
+      ];
+
+      var current = new Date(); // mes actual
+
+      function formatDateLabel(date) {
+        var d = String(date.getDate()).padStart(2, '0');
+        var m = monthNamesShort[date.getMonth()];
+        return d + ' ' + m;
+      }
+
+      function renderSlots(date) {
+        slotsContainer.innerHTML = '';
+
+        var isSunday = date.getDay() === 0;
+        if (isSunday) {
+          slotsTitle.textContent = 'Sin horarios · ' + formatDateLabel(date);
+          var p = document.createElement('p');
+          p.textContent = 'Este día está cerrado.';
+          p.className = 'time-slots-empty';
+          slotsContainer.appendChild(p);
+          return;
+        }
+
+        slotsTitle.textContent =
+          'Horarios disponibles · ' + formatDateLabel(date);
+
+        baseSlots.forEach(function (time, index) {
+          var btn = document.createElement('button');
+          btn.textContent = time;
+          btn.className = 'time-slot';
+
+          // Ocupamos algunos para que se vea real
+          if (index === 0 || index === 4 || index === 6) {
+            btn.disabled = true;
+          }
+
+          btn.addEventListener('click', function () {
+            Array.prototype.forEach.call(
+              document.querySelectorAll('.time-slot'),
+              function (b) { b.classList.remove('time-slot--selected'); }
+            );
+            btn.classList.add('time-slot--selected');
+          });
+
+          slotsContainer.appendChild(btn);
+        });
+      }
+
+      function renderCalendar(date) {
+        var year = date.getFullYear();
+        var month = date.getMonth();
+        monthLabel.textContent = monthNames[month] + ' ' + year;
+
+        calendarGrid.innerHTML = '';
+
+        // labels de días
+        dayLabels.forEach(function (label) {
+          var span = document.createElement('span');
+          span.className = 'calendar-day calendar-day--label';
+          span.textContent = label;
+          calendarGrid.appendChild(span);
+        });
+
+        var firstDay = new Date(year, month, 1);
+        var lastDay = new Date(year, month + 1, 0);
+        var startWeekday = firstDay.getDay(); // 0 = domingo
+
+        // huecos antes del día 1
+        for (var i = 0; i < startWeekday; i++) {
+          var blank = document.createElement('div');
+          blank.className = 'calendar-day calendar-day--muted';
+          calendarGrid.appendChild(blank);
+        }
+
+        // días del mes
+        for (var day = 1; day <= lastDay.getDate(); day++) {
+          (function (dayNumber) {
+            var d = new Date(year, month, dayNumber);
+            var btn = document.createElement('button');
+            btn.className = 'calendar-day';
+            btn.dataset.date = d.toISOString().slice(0, 10);
+
+            var spanDay = document.createElement('span');
+            spanDay.textContent = dayNumber;
+            btn.appendChild(spanDay);
+
+            var status = document.createElement('span');
+            status.className = 'calendar-day__status';
+
+            if (d.getDay() === 0) {
+              status.textContent = 'Cerrado';
+            } else {
+              status.textContent = (baseSlots.length - 3) + ' libres';
+            }
+
+            btn.appendChild(status);
+
+            btn.addEventListener('click', function () {
+              Array.prototype.forEach.call(
+                document.querySelectorAll('.calendar-day--selected'),
+                function (el) { el.classList.remove('calendar-day--selected'); }
+              );
+              btn.classList.add('calendar-day--selected');
+              renderSlots(d);
+            });
+
+            calendarGrid.appendChild(btn);
+          })(day);
+        }
+
+        // Seleccionar automáticamente el día de hoy (si está en este mes)
+        var today = new Date();
+        if (
+          today.getFullYear() === year &&
+          today.getMonth() === month
+        ) {
+          var todayStr = today.toISOString().slice(0, 10);
+          var todayBtn = calendarGrid.querySelector(
+            '.calendar-day[data-date="' + todayStr + '"]'
+          );
+          if (todayBtn) {
+            todayBtn.classList.add('calendar-day--selected');
+            renderSlots(today);
+          }
+        }
+      }
+
+      // Navegación de mes
+      Array.prototype.forEach.call(
+        document.querySelectorAll('.calendar-nav'),
+        function (btn) {
+          btn.addEventListener('click', function () {
+            var dir = btn.dataset.dir;
+            current.setMonth(current.getMonth() + (dir === 'next' ? 1 : -1));
+            renderCalendar(current);
+
+            // Buscar el primer día seleccionable (no domingo)
+            var firstSelectable = new Date(
+              current.getFullYear(),
+              current.getMonth(),
+              1
+            );
+            while (firstSelectable.getDay() === 0) {
+              firstSelectable.setDate(firstSelectable.getDate() + 1);
+            }
+
+            // marcar seleccionado
+            var dateStr = firstSelectable.toISOString().slice(0, 10);
+            var btnDay = calendarGrid.querySelector(
+              '.calendar-day[data-date="' + dateStr + '"]'
+            );
+            if (btnDay) {
+              btnDay.classList.add('calendar-day--selected');
+            }
+            renderSlots(firstSelectable);
+          });
+        }
+      );
+
+      // inicializar
+      renderCalendar(current);
+      renderSlots(current);
+    });
+  </script>
